@@ -265,9 +265,10 @@
     <Compile Include="Assets\Scripts\Core\Pool.cs" />
     <Compile Include="Assets\Scripts\Core\UpdateTime.cs" />
     <Compile Include="Assets\Scripts\TouchInput\TouchContainer.cs" />
-    <Compile Include="Assets\Scripts\TouchInput\TouchContainerPool.cs" />
     <Compile Include="Assets\Scripts\TouchInput\TouchesHandler.cs" />
     <Compile Include="Assets\Scripts\TouchInput\TouchInfo.cs" />
+    <Compile Include="Assets\Scripts\TouchInput\ITouchListener.cs" />
+    <Compile Include="Assets\Scripts\Behaviors\InputManagerBehavior.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

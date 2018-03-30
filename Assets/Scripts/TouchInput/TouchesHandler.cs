@@ -9,7 +9,7 @@ namespace TouchInput
     {
         public TouchesHandler()
         {
-            _containersPool = new TouchContainerPool();
+            _containersPool = new Pool<TouchContainer>();
             _containersPool.Reserve(8);
             _touches = new Dictionary<int, TouchContainer>();
         }
@@ -25,9 +25,24 @@ namespace TouchInput
         void UpdateTouch(Touch touch)
         {
             var id = touch.fingerId;
+
+        }
+
+        void UpdateMouse()
+        {
+            var lbState = Input.GetMouseButton(0);
+            var id = int.MinValue;
+            if (lbState)
+            {
+                
+            }
+            else
+            {
+                
+            }
         }
 
         Dictionary<int, TouchContainer> _touches;
-        TouchContainerPool _containersPool;
+        Pool<TouchContainer> _containersPool;
     }
 }

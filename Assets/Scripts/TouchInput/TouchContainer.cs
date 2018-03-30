@@ -1,35 +1,40 @@
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using Core;
 
 namespace TouchInput
 {
-    public class TouchContainer: IPoolOnObtain
+    public class TouchContainer: IPoolOnObtain, IPoolOnReturn
     {
         public int Id;
         public TouchInfo Touch;
-        public Queue<TouchInfo> History;
+        public Queue<TouchInfo> History = new Queue<TouchInfo>();
 
-        public TouchContainer(){}
-
-        public void Start()
+        public void Start(TouchInfo touch)
         {
             History.Clear();
+            Touch = touch;
+            History.Enqueue(touch);
+
+            // todo: call listener
         }
 
-        public void Update()
+        public void Update(TouchInfo touch)
         {
             
         }
 
-        public void End()
+        public void End(TouchInfo touch)
         {
 
         }
 
         public void PoolOnObtain()
         {
+        }
+
+        public void PoolOnReturn()
+        {
+            
         }
     }
 }

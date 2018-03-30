@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class TrailsManagerBehavior : MonoBehaviour 
 {
+    static string Tag = "TrailsManagerBehavior";
+
     void Start () 
     {
+        Debug.Log($"Start:{Tag}");
+
         _meshTrails = new List<MeshTrail>();
 
         foreach(Transform child in gameObject.transform)
@@ -21,9 +25,9 @@ public class TrailsManagerBehavior : MonoBehaviour
 
     void Update()
     {
-        var args = UpdateArgs.GetDefault();
+        Debug.Log($"Update:{Tag}");
 
-        // todo: update input
+        var args = UpdateArgs.GetDefault();
 
         foreach (var trail in _meshTrails)
         {
