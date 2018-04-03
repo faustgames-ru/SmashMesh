@@ -29,6 +29,7 @@ namespace TouchInput
             for (var i = 0; i < Input.touchCount; i++)
             {
                 var touch = new TouchInfo(Input.GetTouch(i), e.time);
+                touch.CalRay(CreateArgs.Camera, new Plane(Vector3.forward, Vector3.zero));
                 if (!_touches.ContainsKey(touch.id))
                 {
                     _touches.Add(touch.id, touch);
@@ -41,7 +42,11 @@ namespace TouchInput
             }
             foreach (var contaier in _containers)
             {
-                _endList.Add(contaier.Value);
+                if (contaier.Key == MouseTouchId) continue;
+                if (!_touches.ContainsKey(contaier.Key))
+                {
+                    _endList.Add(contaier.Value);
+                }
             }
 
             UpdateMouse(e);
@@ -122,6 +127,7 @@ namespace TouchInput
             var lbState = Input.GetMouseButton(0);
             var id = MouseTouchId;
             var touch = new TouchInfo(MouseTouchId, TouchPhase.Began, Input.mousePosition, e.time);
+            touch.CalRay(CreateArgs.Camera, new Plane(Vector3.forward, Vector3.zero));
             TouchContainer container = null;
             if (lbState)
             {

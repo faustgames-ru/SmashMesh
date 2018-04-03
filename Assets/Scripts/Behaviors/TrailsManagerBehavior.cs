@@ -7,11 +7,12 @@ using UnityEngine;
 public class TrailsManagerBehavior : MonoBehaviour 
 {
     [Header("Touches")]
+    [Range(0, 16)]
     public int TouchesReserve = 8;
-    [Header("Touches")]
-    public int TouchHistorySizeLimit = 60;
-    [Header("Touches")]
-    public float TouchHistoryTimeLimit = 1.0f;
+    [Range(0, 300)]
+    public int TouchHistorySizeLimit = 150;
+    [Range(0.1f, 5.0f)]
+    public float TouchHistoryTimeLimit = 0.5f;
 
     void Start () 
     {
@@ -19,7 +20,8 @@ public class TrailsManagerBehavior : MonoBehaviour
         {
             TouchesReserve = TouchesReserve,
             TouchHistorySizeLimit = TouchHistorySizeLimit,
-            TouchHistoryTimeLimit = TouchHistoryTimeLimit
+            TouchHistoryTimeLimit = TouchHistoryTimeLimit,
+            Camera = Camera.main
         };
         _touches = new TouchesHandler(touchesCreateArgs);
         _touches.OnTouchStart = OnStartTouch;
