@@ -1,42 +1,43 @@
-using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace Core
 {
-    public interface IPoolOnObtain
+    public class Pool<T> where T: class
     {
-        void PoolOnObtain();
-    }
-
-    public interface IPoolOnReturn
-    {
-        void PoolOnReturn();
-    }
-
-    public class Pool<T> where T: class, new()
-    {
-        public void Reserve(int reserve)
+        public void Reserve(int reserve, Func<T> constructor)
         {
+            T entry = null;
             for (var i = 0; i < reserve; i++)
             {
-                _entries.Push(new T());
+                entry = constructor();
+                _entries.Push(entry);
             }
-        } 
+        }
 
-        public T Obtain()
+        public void Reserve(IEnumerable<T> entries)
+        {
+            foreach (var entry in entries)
+            {
+                _entries.Push(entry);
+            }
+        }
+
+        public T Obtain(Func<T> constructor)
         {
             T result = null;
             if (_entries.Count == 0)
             {
-                result = new T();
+                if (constructor == null)
+                    return null;
+                result = constructor();
             }
             else
             {
                 result = _entries.Pop();
             }
             (result as IPoolOnObtain)?.PoolOnObtain();
-            return result; 
+            return result;
         }
 
         public void Return(T entry)

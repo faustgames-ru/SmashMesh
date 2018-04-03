@@ -4,16 +4,25 @@ namespace TouchInput
 {
     public struct TouchInfo
     {
-        Vector2 position;
+        public int id;
+        public float time;
+        public TouchPhase phase;
+        public Vector2 position;
 
-        public TouchInfo(Touch source)
+        public TouchInfo(Touch touch, float touchTime)
         {
-            position = source.position;
+            id = touch.fingerId;
+            phase = touch.phase;
+            position = touch.position;
+            time = touchTime;
         }
 
-        public TouchInfo(Vector2 value)
+        public TouchInfo(int touchId, TouchPhase touchPhase, Vector2 touchPosition, float touchTime)
         {
-            position = value;
+            id = touchId;
+            phase = touchPhase;
+            position = touchPosition;
+            time = touchTime;
         }
     }
 }

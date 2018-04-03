@@ -113,46 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &180307016
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 180307018}
-  - component: {fileID: 180307017}
-  m_Layer: 0
-  m_Name: InputManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &180307017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 180307016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4b1d1aa565f249f1ba4076ba44c6d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &180307018
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 180307016}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671366224
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5852b97bdc848a8bd14b0c2f1e3663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TouchesReserve: 8
+  TouchHistorySizeLimit: 60
+  TouchHistoryTimeLimit: 1
 --- !u!4 &1245453299
 Transform:
   m_ObjectHideFlags: 0
@@ -418,7 +381,7 @@ Transform:
   - {fileID: 671366225}
   - {fileID: 1572208645}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1403498522
 GameObject:
